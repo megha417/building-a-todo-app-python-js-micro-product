@@ -37,6 +37,21 @@ def contact():
     """Contact page - contact information"""
     return render_template('contact.html')
 
+@app.route('/services')
+def services():
+    """Services page - information about our services"""
+    return render_template('services.html')
+
+@app.route('/plain')
+def plain_text():
+    """Return plain text without HTML template"""
+    return "Hello World - This is plain text!"
+
+@app.route('/hello/<name>')
+def hello(name):
+    """Dynamic route that greets by name"""
+    return f"Hello, {name}! Welcome to our site."
+
 
 # =============================================================================
 # RUN THE SERVER
