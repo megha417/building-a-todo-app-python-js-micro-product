@@ -24,6 +24,8 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(256), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
+    phone = db.Column(db.String(15))
+
 
     # Relationship: One user can have many todos
     todos = db.relationship('Todo', backref='owner', lazy=True)
