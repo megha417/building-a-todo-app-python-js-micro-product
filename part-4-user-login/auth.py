@@ -15,6 +15,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 SECRET_KEY = "your-secret-key-change-in-production"
 
 # Token expires after 24 hours
+# NOTE: For Activity 3 testing, change to 0.001 to test expiration (3.6 seconds)
 TOKEN_EXPIRATION_HOURS = 24
 
 

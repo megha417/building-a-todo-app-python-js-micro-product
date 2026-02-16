@@ -1,5 +1,25 @@
 # =============================================================================
-# Part 4: User Login
+# Part 4: User Login & Authentication
+# =============================================================================
+# 
+# Key Improvements from Part 3:
+#   1. Password Hashing: Passwords stored as hashes (NOT plain text)
+#   2. JWT Tokens: Users get tokens on login (instead of plain storage)
+#   3. Login Endpoint: New /api/login route for authentication
+#   4. Dashboard Protection: Frontend checks for token before showing page
+#
+# What You'll Learn:
+#   - Why hashing passwords is critical for security
+#   - How JWT tokens work for stateless authentication
+#   - How localStorage stores tokens on the client side
+#   - Complete login/logout flow
+#
+# Activity Tracking:
+#   ✅ Activity 1: Compare password storage (plain text vs hashed)
+#   ✅ Activity 2: Decode JWT token at https://jwt.io
+#   ⏳ Activity 3: Test token expiration (change TOKEN_EXPIRATION_HOURS to 0.001)
+#   ⏳ Activity 4: Inspect localStorage in DevTools (F12 > Application tab)
+#
 # =============================================================================
 
 from flask import Flask, render_template, request, jsonify
