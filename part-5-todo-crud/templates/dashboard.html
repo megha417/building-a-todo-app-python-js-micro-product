@@ -103,6 +103,7 @@
                                ${todo.is_completed ? 'checked' : ''}
                                onchange="toggleTodo(${todo.id}, this.checked)">
                         <span class="todo-text">${escapeHtml(todo.task_content)}</span>
+                        <button class="btn btn-sm btn-outline-primary ms-2" onclick="editTodo(${todo.id}, '${escapeHtml(todo.task_content)}')">Edit</button>
                         <button class="btn btn-sm btn-outline-danger" onclick="deleteTodo(${todo.id})">Delete</button>
                     </div>
                 `).join('');
@@ -123,6 +124,23 @@
                 body: JSON.stringify({ is_completed: isCompleted })
             });
             loadTodos();
+        }
+
+        async function editTodo(id, currentContent) {
+            const newContent = prompt('Edit task:', currentContent);
+            if (newContent === null || newContent.trim() === '') return;
+
+            const res = await fetch(`/api/todos/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ task_content: newContent })
+            });
+
+            if (res.ok) {
+                loadTodos();
+            } else {
+                alert('Failed to update task');
+            }
         }
 
         async function deleteTodo(id) {
